@@ -4,3 +4,191 @@
 *:after {
   box-sizing: border-box;
 }
+body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+img {
+  height: 100%;
+}
+.checkers {
+  display: none;
+}
+
+/* header styles */
+header a, .own-now, h1, h2, h3, h4, h5, h6 {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-decoration: none;
+  color: black;
+}
+.siteName {
+  font-size: 2em;
+  text-align: left;
+}
+#tools {
+  text-align: right;
+}
+#top-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  padding-bottom: .2em;
+}
+
+/* navigation styles */
+nav > ul > li  {
+  text-decoration: none;
+  color: white;
+}
+nav > ul {
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 1em;
+}
+nav {
+  background-color: black;
+}
+
+.success, .error, .notice {
+  list-style: none;
+  padding: 0;
+  max-width: 30em;
+  margin-bottom: .6em;
+}
+.success li, .error li, .notice li {
+  padding: 1em;
+  margin: 1em;
+  border-radius: 1em;
+}
+.success li {
+  background-color: rgb(157, 219, 157);
+  border: 3px solid rgb(125, 194, 125);
+}
+.error li {
+  background-color: rgb(236, 129, 129);
+  border: 3px solid rgb(216, 103, 103);
+}
+.notice li {
+  background-color: rgb(245, 211, 119);
+  border: 3px solid rgb(244, 196, 63);
+}
+
+/* hero */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+.hero-grid img {
+  width: 100%;
+  height: auto;
+  justify-self: center;
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+}
+.hero-grid div {
+  background-color: rgba(255, 255, 255, 0.581);
+  color: cornflowerblue;
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 100%;
+  grid-column: 1/2;
+  grid-row: 1/-1;
+}
+.hero-grid .own-now {
+  background-color: cornflowerblue;
+  color: black;  
+  text-align: center;
+  padding: 1em;
+}
+
+/* upgrades */
+.upgrade-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.upgrades {
+  text-align: center;
+}
+.upgrade {
+  background-color:dodgerblue;
+  border: 2px solid gray;
+  min-height: 5em;
+  text-align: center;
+  margin: .5em;
+  height: 60%;
+}
+.upgrades h2 {
+  text-align: left;
+}
+.upgrade img {
+  padding: .6em;
+}
+
+/* footer */
+footer {
+  padding: 1em;
+  padding-bottom: .2em;
+}
+
+/* phone */
+@media screen and (min-width: 700px) {
+  /* body + main + checkerboard */
+  body {
+    background-image: url("/images/site/checkerboard.jpg");
+    background-repeat:repeat;
+    background-size: 35em 35em;
+  }
+  #wrapper {
+    background-color: white;
+    border-radius: 1.2em;
+    border: 3px solid rgb(34, 95, 207);
+    width: 80%;
+    margin: auto;
+    /* display: none; */
+  }
+
+  /* main + nav sizing */
+  main, nav {
+    margin: 1em;
+  }
+
+  /* reviews + upgrades */
+  .extra-grid {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+  }
+}
+
+/* tablet */
+@media screen and (min-width: 1100px) {
+  #inv-display {
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+  #inv-display li {
+    width: 25em;
+  }
+
+  /* single car view */
+  #singleVehicleWrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+  #singleVehicleWrapper img {
+    width: auto;
+    max-height: 14em;
+  }
+}
+
+/* laptop/desktop */
+@media screen and (min-width: 1700px) {
+  #inv-display {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  #singleVehicleWrapper img {
+    width: auto;
+    max-height: 25em;
+  }
+}
