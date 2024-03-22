@@ -35,7 +35,7 @@ header a, .own-now, h1, h2, h3, h4, h5, h6 {
 }
 
 /* navigation styles */
-nav > ul > li  {
+nav > ul > li  a{
   text-decoration: none;
   color: white;
 }
