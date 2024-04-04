@@ -1,0 +1,45 @@
+<!-- adds h1, good seo, and a heading for the page! -->
+<% if (title) { %>
+    <h1><%= title %></h1>
+  <% } else {
+    res.redirect('/')
+  } %>
+  
+  <!-- displays error messages -->
+  <%- messages() %>
+  
+  <!-- display errors -->
+  <% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
+  <% }) %>
+    </ul>
+  <% } %>
+  
+  <!-- display the contents of the page -->
+  <form class="form" action="/inbox/send" method="post">
+    <fieldset class="form--fieldset"> 
+      <label for="message_to">To:</label>
+      <select name="message_to" id="message_to">
+        <%- accountSelect %>
+      </select>
+  
+      <input type="hidden" id="message_from" name="message_from" value="
+      <% if (locals.message_from) { %>
+        <%= locals.message_from %>"
+      <% } else { %>
+        <%= accountData.account_id %>"
+      <% } %>
+      >
+      
+      <label for="message_subject">Subject:</label>
+      <input type="text" id="message_subject" name="message_subject" value="<%= locals.message_subject %>" required>
+  
+      <label for="message_body">Message:</label>
+      <textarea id="message_body" name="message_body" cols="40" rows="5" required><%= locals.message_body %></textarea>
+      
+      <input type="submit" value="Send">
+    </fieldset>
+  </form>
+  <!-- <script src="/js/script.js"></script> -->

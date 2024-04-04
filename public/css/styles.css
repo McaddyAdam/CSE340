@@ -35,7 +35,7 @@ header a, .own-now, h1, h2, h3, h4, h5, h6 {
 }
 
 /* navigation styles */
-nav > ul > li  a{
+nav > ul > li > a {
   text-decoration: none;
   color: white;
 }
@@ -124,6 +124,246 @@ nav {
 }
 .upgrade img {
   padding: .6em;
+}
+
+/* class pages */
+#inv-display {
+  display: grid;
+  gap: 1em;
+  list-style: none;
+  /* padding: 0; */
+  padding: 1em;
+  justify-content: center;
+}
+
+#inv-display li img {
+  /* height: 100%; */
+  max-height: 50%;
+}
+#inv-display li {
+  /* height: 100%; */
+  /* width: 100%; */
+  max-width: 25em;
+  background-color: black;
+  border-radius: 1.5em;
+  /* margin: 1em; */
+  padding: 2em;
+  text-align: center;
+}
+
+.namePrice {
+  color: white;
+}
+.namePrice h2 > a {
+  font-family: inherit;
+  color: white;
+  text-decoration: none;
+}
+
+#singleVehicleWrapper {
+  display: grid;
+}
+#singleVehicleWrapper img {
+  width: 99%;
+  margin: auto;
+}
+#singleVehicleDetails {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  list-style: none;
+  padding: 0;
+}
+#singleVehicleDetails li:nth-child(even) {
+  background-color: gainsboro;
+}
+#singleVehicleDetails li h2 {
+  font-size: 1.2em;
+  margin: 0;
+  padding: 0;
+}
+#singleVehicleDetails li {
+  font-size: 1.2em;
+  padding: .8em;
+  border-radius: .5em;
+}
+
+/* MANAGEMENT PAGE */
+.management-links {
+  padding: 1em;
+  margin-top: -2em;
+  margin-bottom: -2em;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.management-links a {
+  padding: .6em;
+  margin: 1em;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.1em;
+  color: black;
+  border: 3px solid rgb(34, 95, 207);
+  background-color: rgb(168, 197, 250);
+  border-radius: 15px;
+}
+
+/* BASE FORM STYLING */
+.form label {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-bottom: .1em;
+}
+.form {
+  max-width: 30em;
+  margin: 0 auto;
+  /* padding: 2.5em; */
+  font-size: 1.2em;
+  border: 3px solid rgb(34, 95, 207);
+  background-color: rgb(168, 197, 250);
+  border-radius: 15px;
+}
+.form--fieldset {
+  /* width: 80%; */
+  padding: 0 2em;
+  margin: 0 auto;
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+.form--fieldset input, select {
+  outline: none;
+  border: 2px solid lightgray;
+  border-radius: 10px;
+  min-height: 40px;
+  max-width: 300px;
+  margin-bottom: 1em;
+}
+.form input:focus, .form--fieldset input:focus {
+  outline: none;
+  border: 3px solid rgb(34, 95, 207);
+}
+.form--fieldset input:valid {
+  border: 3px solid rgb(125, 194, 125);
+}
+.form--fieldset input:not(:placeholder-shown):invalid {
+  border: 3px solid rgb(216, 103, 103);
+}
+.form--fieldset input[type="submit"] {
+  margin: 0 auto;
+  min-width: 8em;
+  font-size: large;
+  color: white;
+  background-color: black;
+  border: none;
+  border-radius: 15px;
+}
+
+/* LOGIN FORM */
+.login-form--fieldset {
+  margin-top: 1.5em;
+}
+.login-form p:last-child {
+  text-align: center;
+}
+.login-form p:last-child a {
+  color: rgb(20, 66, 152);
+}
+
+/* REGISTER FORM */
+.register-form p:last-child,
+.register-form p:first-child {
+  text-align: center;
+}
+.register-form p:last-child a {
+  color: rgb(20, 66, 152);
+}
+
+/* ADDCLASS FORM */
+.addclass-form p:first-child {
+  text-align: center;
+}
+.addclass-form--fieldset input[type="submit"] {
+  margin-bottom: 1em;
+  padding: 0 1em 0 1em;
+}
+
+/* ADDVEHICLE FORM */
+.addvehicle-form p:first-child {
+  text-align: center;
+}
+.addvehicle-form--fieldset input[type="submit"] {
+  margin-bottom: 1em;
+}
+
+/* EDITVEHICLE FORM */
+#updateBtn:disabled {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* DELETECONFIRM FORM */
+/* #deleteForm {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+} */
+input[readonly] {
+  outline: none;
+  border: 3px solid rgb(34, 95, 207);
+}
+
+.manage-inventory p {
+  font-size: 1.1em;
+  margin-bottom: .6em;
+}
+.manage-inventory table {
+  border-collapse: collapse;
+  margin-left: 2em;
+  width: 70%;
+}
+.manage-inventory th {
+  text-align: left;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding: 0 1em;
+}
+.manage-inventory table td {
+  height: 50px;
+  min-width: 5em;
+  text-align: center;
+}
+.manage-inventory table tr td:first-child {
+  padding: 0 1em;
+  text-align: left;
+}
+.manage-inventory table tr td:nth-child(1n + 2) {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 500;
+}
+.manage-inventory table tbody tr:nth-child(odd) {
+  border: 1.5px solid rgb(211, 211, 211);
+}
+.manage-inventory table tbody tr:nth-child(even) {
+  background-color: rgb(233, 233, 233);
+  border: 1.5px solid rgb(211, 211, 211);
+}
+
+.manage-inventory a {
+  text-decoration: none;
+  color: rgb(20, 66, 152);
+  transition: font-size .2s;
+}
+.manage-inventory a:hover {
+  font-size: 1.2em;
+}
+
+.bubble {
+  height: 12px;
+  width: 12px;
+  border-radius: 12px;
+}
+.false {
+  background-color: cornflowerblue;
+}
+.true {
+  border: 2px solid gray;
 }
 
 /* footer */

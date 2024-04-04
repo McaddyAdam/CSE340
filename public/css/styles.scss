@@ -1,0 +1,525 @@
+//variables
+$primary-color: #08b4d4;
+$secondary-color: #EFF8E2;
+$accent1: #ADA8B6;
+$accent2: #23022E;
+$accent3: #573280;
+$text-color: #333;
+$background-text-color: #fefefe;
+$large-breakpoint: 670px;
+$xlarge-breakpoint: 800px;
+$heading-font: 'Helvetica', 'Arial', sans-serif;
+$text-font: 'Arial', sans-serif;
+
+//mixins
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == 'large' {
+        @media (min-width: $large-breakpoint) { @content; }
+    } @else if $breakpoint == 'xlarge' {
+        @media (min-width: $xlarge-breakpoint) { @content; }
+    }
+}
+
+@mixin flex-box($type) {
+    @if $type == 'centered' {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+h1, h2, h3, h4, h5, h6, a {
+    font-family: $heading-font;
+}
+
+p, li {
+    font-family: $text-font;
+}
+
+img {
+    max-width: 100%;
+}
+
+// Utility Classes
+.d-none {
+    display: none;
+}
+
+body {
+    @include respond-to('large') {
+        background-image: url('/images/site/small_check.jpg');
+        @include flex-box(('centered'))
+    }
+}
+
+#wrapper {
+    @include respond-to('large') {
+        width: 85%;
+        height: 95%;
+        background-color: white;
+        border: 3px solid $primary-color;
+        border-radius: 5px;
+        padding: 10px;
+    }
+}
+
+#top-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+    a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    .siteName a {
+        font-size: 34px;
+        font-weight: bold;
+    }
+}
+
+nav {
+    padding: 0px;
+    ul {
+        list-style-type: none;
+        background-color: #333;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        // display: flex;
+        // justify-content: space-evenly;
+        padding: 0px;
+
+        li {
+            &:hover {
+                background-color: #666;
+            }
+
+            text-align: center;
+            cursor: pointer;
+
+            a {
+                padding: 5px;
+                display: block;
+                width: 100%;
+                height: 100%;
+                text-decoration: none;
+                color: white;
+            }
+        }
+    }
+}
+
+// Main body styles
+#welcome {
+    > div {
+        position: relative;
+        display: flex;
+        justify-content: center;
+
+        > div {
+            position: absolute;
+            left: 0;
+            top: 20px;
+            z-index: 1;
+            color: #333;
+
+            .transparent-background {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-color: white;
+                opacity: .9;
+                z-index: -1;
+            }
+
+            h3, p {
+                margin: 0px;
+            }
+
+            img {
+                width: 165px;
+            }
+        }
+    }
+}
+
+#reviews {
+    @include respond-to('large') {
+        display: grid;
+        grid-template-rows: auto 1fr;
+    }
+
+    li {
+        font-style: italic;
+        margin-bottom: 5px;
+    }
+
+    ul {
+        @include respond-to('large') {
+            height: 100%;
+            margin: 0px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+    }
+}
+
+#upgrades {
+    > div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 5px;
+        text-align: center;
+    }
+
+    .background-primary {
+        background-color: $primary-color;
+        width: 100%;
+        height: 85px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border: 1px #666 solid;
+    }
+}
+
+#home-grid {
+    @include respond-to('large') {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+
+        #reviews { 
+            order: 1; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
+
+#inv-display {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 15px;
+    grid-row-gap: 35px;
+
+    list-style-type: none;
+
+    @include respond-to('large') {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .inv-item {
+        // styling
+        border-radius: 15px;
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+
+        // positioning
+        align-self: center;
+        justify-self: center;
+
+        // sizing
+        width: 80%;
+        height: 260px;
+        max-width: 425px;
+        overflow: hidden;
+
+        // display
+        display: grid;
+        grid-template-rows: 2fr 1fr;
+
+        hr {
+            display: none;
+        }
+
+        > a {
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            overflow: hidden;
+        }
+
+        &__photo {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        &__name-price {
+            background-color: $accent1;
+            text-align: center;
+
+            padding: 5px;
+
+            h2 a {
+                text-decoration: none;
+                color: $accent2;
+            }
+        }
+    }
+}
+
+.item-display {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include respond-to(xlarge) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    &__primary-photo {
+        
+        img {
+            width: 100%;
+
+            max-height: 100%;
+            border-radius: 5px;
+        }
+    }
+
+    &__info-display {
+        list-style-type: none;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        li {
+            margin-bottom: 10px;
+        }
+    }
+
+    &__call-to-action {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin-top: 50px;
+        margin-bottom: 50px;
+        
+        @include respond-to(xlarge) {
+            grid-column: 1/3;
+        }
+
+        button {
+            width: 70%;
+            background-color: $primary-color;
+            color: #333;
+
+            padding: 25px;
+            border: 1px solid $accent1;
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            font-size: 1rem;
+        }
+    }
+}
+
+// ----------------------------------
+// Login-form
+// ----------------------------------
+
+.login-form {
+    // Display
+    display: flex;
+    flex-direction: column;
+
+    // styles
+    background-color: $secondary-color;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+
+    // sizing and spacing
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+
+    &__label {
+        // styles
+        font-weight: bold;
+        color: $text-color;
+        font-size: 24px;
+        
+        // spacing and sizing
+        margin-bottom: 5px;
+    }
+
+    &__input {
+        //styles
+        border: none;
+        border-radius: 5px;
+        color: $text-color;
+        font-size: 18px;
+        box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.3);
+
+        // spacing and sizing
+        height: 35px;
+        padding-left: 7px;
+        margin-bottom: 20px;
+    }
+
+    &__submit {
+        // display
+        display: flex;
+        justify-content: center;
+
+        input {
+            // styles
+            background-color: white;
+            color: $text-color;
+            border-radius: 20px;
+            border: none;
+            box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+
+            // sizing and spacing
+            margin-bottom: 20px;
+            width: 100px;
+            height: 30px;
+        }
+    }
+
+    &__sign-up {
+        text-align: center;
+        font-size: 16px;
+    }
+}
+
+
+// ----------------------------------
+// .register-form
+// ----------------------------------
+
+.register-form {
+    // display
+    display: flex;
+    flex-direction: column;
+
+    // sizing and spacing
+    padding: 20px;
+    width: 100%;
+    max-width: 360px;
+    
+    // styles
+    background-color: $secondary-color;
+    border: 1px solid $accent1;
+    border-radius: 5px;
+
+    &__label {
+        // styles
+        font-size: 24px;
+        color: $text-color;
+    }
+
+    &__input {
+        // styles
+        color: $text-color;
+        box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.3);
+        border: none;
+
+        // sizing and spacing
+        padding-left: 10px;
+        height: 35px;
+        margin-bottom: 20px;
+
+        &:valid {
+            border: 1px solid green;
+        }
+    }
+
+    &__submit {
+
+        input {
+            // styles
+            background-color: $primary-color;
+            color: $text-color;
+            border-radius: 25px;
+            border: none;
+            font-size: 18px;
+            box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+
+            // sizing and spacing
+            height: 45px;
+            width: 120px;
+        }
+    }
+}
+
+
+// ----------------------------------
+// Inventory and Classification add forms
+// ----------------------------------
+.add-form {
+    // display
+    &:not(&--compact) {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    &--compact {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+    }
+
+    // sizing and spacing
+
+
+
+    label {
+        // styles
+        font-weight: bold;
+        font-size: 24px;
+    }
+
+    input:not(&__submit), textarea, select {
+        // styles
+        color: $text-color;
+        border-radius: 5px;
+        border: 1px outset $accent1;
+        font-size: 18px;
+
+        // sizing and spacing
+        height: 45px;
+        width: 95%;
+        padding-left: 10px;
+
+        &:valid {
+            border: 2px solid green;
+        }
+    }
+
+    &__submit {
+        // position
+
+        // sizing and spacing
+        width: 200px;
+        height: 45px;
+        margin-bottom: 30px;
+        margin-top: 20px;
+
+        // styles
+        background-color: $primary-color !important;
+        border-radius: 25px;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    p {
+        font-style: italic;
+    }
+}

@@ -1,0 +1,43 @@
+<!-- adds h1, good seo, and a heading for the page! -->
+<% if (title) { %>
+    <h1><%= title %></h1>
+  <% } else {
+    res.redirect('/')
+  } %>
+  
+  <!-- displays error messages -->
+  <%- messages() %>
+  
+  <!-- display errors -->
+  <% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
+  <%  }) %>
+    </ul>
+  <% } %>
+  
+  <!-- display the contents of the page -->
+  <form class="form" action="/inbox/reply" method="post">
+    <fieldset class="form--fieldset"> 
+      <p>Replying to:</p>
+      <p><%= locals.account_firstname %> <%= locals.account_lastname %></p>
+  
+      <p>Subject:</p>
+      <p>Re:<%= locals.message_subject %></p>
+  
+      <p>Original Message:</p>
+      <p><%= locals.message_body %></p>
+  
+      <input type="hidden" id="message_to" name="message_to" value="<%= locals.message_to %>">
+      <input type="hidden" id="message_from" name="message_from" value="<%= locals.message_from %>">
+      <input type="hidden" id="message_subject" name="message_subject" value="<%= locals.message_subject %>">
+      <input type="hidden" id="message_body" name="message_body" value="<%= locals.message_body %>">
+  
+      <label for="reply_message">Reply:</label>
+      <textarea id="reply_message" name="reply_message" cols="40" rows="5"><%= locals.reply_message %></textarea>
+  
+      <input type="submit" value="Reply">
+    </fieldset>
+  </form>
+  <!-- <script src="/js/script.js"></script> -->

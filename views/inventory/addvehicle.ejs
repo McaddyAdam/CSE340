@@ -1,0 +1,60 @@
+<!-- adds h1, good seo, and a heading for the page! -->
+<% if (title) { %>
+    <h1><%= title %></h1>
+  <% } else {
+    res.redirect('/')
+    } %>
+  
+  <!-- displays error messages -->
+  <%- messages() %>
+  
+  <!-- display errors -->
+  <% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+    </ul>
+  <% } %>
+  
+  <!-- display the contents of the page -->
+  <form class="form addvehicle-form" action="/inv/addvehicle" method="post">
+    <p>*All fields are required</p>
+    <fieldset class="form--fieldset addvehicle-form--fieldset"> 
+      <!-- CLASSIFICATION DROP DOWN -->
+      <label for="classification_id">Classification:</label>
+      <select name="classification_id" id="classification_id">
+        <%- classSelect %>
+      </select>
+      
+      <label for="inv_make">Make:</label>
+      <input type="text" id="inv_make" name="inv_make" placeholder="Min of 3 characters" value="<%= locals.inv_make %>" minlength="3" required>
+      
+      <label for="inv_model">Model:</label>
+      <input type="text" id="inv_model" name="inv_model" placeholder="Min of 3 characters" value="<%= locals.inv_model %>" minlength="3" required>
+      
+      <label for="inv_year">Year:</label>
+      <input type="text" id="inv_year" name="inv_year" placeholder="4-digit year" value="<%= locals.inv_year %>" pattern="^\d{4}$" required>
+      
+      <label for="inv_description">Description:</label>
+      <textarea id="inv_description" name="inv_description" cols="40" rows="5" required><%= locals.inv_description %></textarea>
+      
+      <label for="inv_image">Image path:</label>
+      <input type="text" id="inv_image" name="inv_image" value="/images/vehicles/no-image.png" pattern="^\/images\/vehicles\/[a-zA-Z0-9\-_]+\.([a-zA-Z]{3,4})$" required>
+  
+      <label for="inv_thumbnail">Thumbnail path:</label>
+      <input type="text" id="inv_thumbnail" name="inv_thumbnail" value="/images/vehicles/no-image-tn.png" pattern="^\/images\/vehicles\/[a-zA-Z0-9\-_]+\.([a-zA-Z]{3,4})$" required>
+      
+      <label for="inv_price">Price:</label>
+      <input type="text" id="inv_price" name="inv_price" placeholder="Decimal or integer" value="<%= locals.inv_price %>" pattern="^\d+(\.\d{1,2})?$" required>
+  
+      <label for="inv_miles">Miles:</label>
+      <input type="text" id="inv_miles" name="inv_miles" placeholder="Digits only" value="<%= locals.inv_miles %>" pattern="^[0-9]+$" required>
+  
+      <label for="inv_color">Color:</label>
+      <input type="text" id="inv_color" name="inv_color" placeholder="Vehicle color" value="<%= locals.inv_color %>" pattern="^[A-Za-z]+$" required>
+  
+      <input type="submit" name="submit" value="Add Vehicle">
+    </fieldset>
+  </form>
+  <script src="/js/script.js"></script>

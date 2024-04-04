@@ -1,0 +1,32 @@
+<!-- adds h1, good seo, and a heading for the page! -->
+<% if (title) { %>
+    <h1><%= title %></h1>
+  <% } else {
+    res.redirect('/')
+    } %>
+  
+  <!-- displays error messages -->
+  <%- messages() %>
+  
+  <!-- display errors -->
+  <% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+  
+  <!-- display the contents of the page -->
+  <form class="form addclass-form" action="/inv/addclass" method="post">
+    <p>*Field is required</p>
+    <fieldset class="form--fieldset addclass-form--fieldset"> 
+      
+      <label for="classification_name">New Classification:</label>
+      <input type="text" id="classification_name" name="classification_name" placeholder="Enter new classification" value="<%= locals.classification_name %>" pattern="^[a-zA-Z]+$" autofocus required>
+      <p>*Name must be alphabetic characters only, and minimum 3 characters</p>
+      
+      <input type="submit" value="Add Classification">
+    </fieldset>
+  </form>
+  <script src="/js/script.js"></script>

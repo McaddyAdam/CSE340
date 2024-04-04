@@ -1,0 +1,26 @@
+<!-- adds h1, good seo, and a heading for the page! -->
+<% if (title) { %>
+    <h1><%= title %></h1>
+  <% } else {
+    res.redirect('/')
+  } %>
+  
+  <!-- displays error messages -->
+  <%- messages() %>
+  
+  <!-- display errors -->
+  <% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
+  <%  }) %>
+    </ul>
+  <% } %>
+  
+  <!-- send new message /account/send -->
+  <div class="management-links">
+    <a href="/inbox/send">Send Message</a>
+    <a href="/inbox/archivedmessages">View archived messages (<%= locals.archivedMessageCount %>)</a>
+  </div>
+  
+  <%- inboxMessages %>
