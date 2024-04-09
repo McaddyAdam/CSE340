@@ -1,14 +1,14 @@
-<!-- adds h1, good seo, and a heading for the page! -->
+// adds h1, good seo, and a heading for the page! //
 <% if (title) { %>
   <h1><%= title %></h1>
 <% } else {
   res.redirect('/')
 } %>
 
-<!-- displays messages -->
+// displays messages //
 <%- messages() %>
 
-<!-- display errors -->
+// display errors //
 <% if (errors) { %>
   <ul class="notice">
  <% errors.array().forEach(error => { %>

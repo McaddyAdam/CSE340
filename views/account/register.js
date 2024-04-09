@@ -1,38 +1,22 @@
-// Deliver Register Activity //
-<% if (title) { %>
-<h1><%= title %></h1>
-<% } else { res.redirect('/') } %>
+<div class="card login">
 
-<%- messages() %>
+    <h1><%- title %></h1>
+    <p>All fields are required</p>
+    <form action="/account/register" method="post">
+      <label for="firstname">
+        <input type="text" id="firstname" name="account_firstname" placeholder="First Name" value="">
+      </label>
+      <label for="lastname">
+        <input type="text" id="lastname" name="account_lastname" placeholder="Last Name" value="">
+      </label>
+      <label for="email">
+        <input type="email" id="email" name="account_email" placeholder="Email Address" value="">
+      </label>
+      <label for="password">
+        <span class="login_pass_note">The password must be at least 12 characters and include at least one number, one lowercase letter, one capital letter, and one non-alphanumeric character (not a space).</span>
+        <input type="password" id="password" name="account_password" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+      </label>
+      <input class="register_submit" type="submit" value="Register">
+    </form>
 
-<% if (errors) { %>
-<ul class="notice">
-  <% errors.array().forEach(error => { %>
-  <li><%= error.msg %></li>
-  <%  }) %>
-</ul>
-<% } %>
-
-<div id="registerContainer">
-<p>All fields are required.</p>
-<form id="registerForm" action="/account/register" method="post">  
-  <fieldset>
-    <label for="firstname">First name: </label>
-    <input type="text" name="account_firstname" id="firsname" size="10" 
-    required value="<%= locals.account_firstname %>">
-    <label for="lastname">Last name:</label>
-    <input type="text" name="account_lastname" id="lastname" 
-    required value="<%= locals.account_lastname %>"></input>
-    <label for="email">Email Address:</label>
-    <input type="email" name="account_email" id="email" 
-    required value="<%= locals.account_email %>">
-    <label for="password">Password:</label>
-    <input type="password" name="account_password" id="password" required 
-    pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
-    <div><i>Passwords must have minimum 12 characters and include 1 capital letter, 1 number and 1 special character.</i></div> 
-    <div id="pswdBtn">Show Password</div>
-    <button type="submit">Register</button>
-  </fieldset>
-</form>
-</div>
-<script src="/js/script.js"></script>
+  </div>

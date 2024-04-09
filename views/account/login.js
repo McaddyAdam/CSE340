@@ -1,36 +1,18 @@
-<!-- adds h1, good seo, and a heading for the page! -->
-<% if (title) { %>
-  <h1><%= title %></h1>
-<% } else {
-  res.redirect('/')
-  } %>
+<div class="card login">
 
-// displays error messages //
 <%- messages() %>
 
-// display errors //
-<% if (errors) { %>
-  <ul class="notice">
- <% errors.array().forEach(error => { %>
-   <li><%= error.msg %></li>
-<%  }) %>
- </ul>
-<% } %>
-
-// display the contents of the page //
-<form id="loginForm" action="/account/login" method="post">
-  <fieldset class="form--fieldset login-form--fieldset"> 
-    <label for="account_email">Email:</label>
-    <input type="email" id="account_email" name="account_email" placeholder="Enter your email" value="<%= locals.account_email %>" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+.\.[a-zA-Z]{2,}$" autofocus required>
-    
-    <label for="account_password">Password:</label>
-    <input type="password" id="account_password" name="account_password" placeholder="Enter your password" required>
-    <p>* Passwords must have minimum 12 characters and include 1 capital letter, 1 number and 1 special character</p>
-    
-    <input type="submit" value="Login">
-  </fieldset>
-  <p>Don't have an account? <a href="/account/register">Sign up here!</a></p> 
+<h1><%- title %></h1>
+<form action="/account/login" method="post">
+    <label for="email"><span class="login_pass_note">Email</span>
+    <input type="email" id="email" name="account_email" placeholder="Email Address">
+    </label>
+    <label for="password">
+    <span class="login_pass_note">Password</span>
+    <input type="password" id="password" name="account_password" placeholder="Password">
+    </label>
+    <input class="login_submit" type="submit" value="Login">
 </form>
 
-<p>No account? <a href="/account/register"> Sign-up </a> </p>
-<script src="/js/script.js"></script>
+<p class="create_account">Not a member? <a href="/account/registration">Create account</a></p>
+</div>

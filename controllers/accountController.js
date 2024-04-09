@@ -6,6 +6,17 @@ const jwt = require("jsonwebtoken")
 require("dotenv").config()
 
 /* ****************************************
+*  Deliver login view (get /login)
+* *************************************** */
+async function buildLogin(req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("account/login", {
+    title: "Login",
+    nav,
+  })
+}
+
+/* ****************************************
 *  Deliver registration view (get /register)
 * *************************************** */
 async function buildRegister(req, res, next) {
@@ -13,7 +24,6 @@ async function buildRegister(req, res, next) {
   res.render("account/register", {
     title: "Register",
     nav,
-    errors: null,
   })
 }
 
@@ -61,18 +71,6 @@ async function registerAccount(req, res) {
       errors: null,
     })
   }
-}
-
-/* ****************************************
-*  Deliver login view (get /login)
-* *************************************** */
-async function buildLogin(req, res, next) {
-  let nav = await utilities.getNav()
-  res.render("account/login", {
-    title: "Login",
-    nav,
-    errors: null,
-  })
 }
 
 /* ****************************************
