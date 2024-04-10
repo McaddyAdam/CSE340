@@ -32,12 +32,6 @@ module.exports = {
 } else {
   pool = new Pool({
     connectionString: process.env.DATABASE_URL,
-    ssl: {
-      rejectUnauthorized: false,
-      ca: fs.readFileSync('path/to/ca-certificate.crt').toString(),
-      key: fs.readFileSync('path/to/client-key.pem').toString(),
-      cert: fs.readFileSync('path/to/client-cert.pem').toString(),
-    },
   })
   module.exports = pool
 }
