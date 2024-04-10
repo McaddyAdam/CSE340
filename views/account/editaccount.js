@@ -1,15 +1,15 @@
 
-<!-- adds h1, good seo, and a heading for the page! -->
+// adds h1, good seo, and a heading for the page! //
 <% if (title) { %>
   <h1><%= title %></h1>
 <% } else {
   res.redirect('/')
 } %>
 
-<!-- displays messages -->
+// displays messages //
 <%- messages() %>
 
-<!-- display errors -->
+// display errors //
 <% if (errors) { %>
   <ul class="notice">
  <% errors.array().forEach(error => { %>
@@ -18,7 +18,7 @@
  </ul>
 <% } %>
 
-<!-- processes for ACCOUNT management -->
+// processes for ACCOUNT management //
 <div class="form">
   <!-- account info update form -->
   <form class="register-form" action="/account/accountupdate" method="post">
@@ -40,7 +40,7 @@
       <input type="submit" value="Update">
       
       <!-- id -->
-      <input type="hidden" name="account_id"
+      <input type="hidden" name="account_id">
       <% if(locals.account_id) { %>
         value="<%= locals.account_id %>"
       <% } %>>
